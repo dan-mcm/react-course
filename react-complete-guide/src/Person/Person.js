@@ -1,5 +1,5 @@
 import React from "react";
-import "./Person.css"; //webpack allows the import of css files
+import classes from "./Person.css"; //webpack allows the import of css files
 
 //note: class-based components use this.props
 //note: function based components cannot use state
@@ -7,7 +7,7 @@ import "./Person.css"; //webpack allows the import of css files
 const person = props => {
 
   return (
-    <div className="Person">
+    <div className={classes.Person}>
       <p onClick={props.click}>
         I'm {props.name} and I am {props.age} years old!
       </p>
