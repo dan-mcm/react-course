@@ -5,15 +5,15 @@ import Person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
-      { id: 'asdf', name: "Max", age: 28 },
-      { id: 'sdfg', name: "Manu", age: 29 },
-      { id: 'dfgh', name: "Stephanie", age: 26 }
+      { id: "asdf", name: "Max", age: 28 },
+      { id: "sdfg", name: "Manu", age: 29 },
+      { id: "dfgh", name: "Stephanie", age: 26 }
     ],
     otherState: "some other value",
     showPersons: false
   };
 
-  nameChangedHandler = ( event, id ) => {
+  nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     }); //built in JS method
@@ -29,15 +29,15 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({persons: persons });
+    this.setState({ persons: persons });
   };
 
-  deletePersonHandler = (personIndex) => {
+  deletePersonHandler = personIndex => {
     //const persons = this.state.persons; //bad practice due to being a pointer to setState
     //const persons = this.state.persons.slice(); //returns a copy of the original this would be ok
     const persons = [...this.state.persons]; //spreads state into a new array - also would be ok
     persons.splice(personIndex, 1);
-    this.setState({persons: persons});
+    this.setState({ persons: persons });
   };
 
   togglePersonHandler = () => {
@@ -47,7 +47,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1x solid blue",
       padding: "8px",
@@ -66,12 +67,13 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
+                changed={event => this.nameChangedHandler(event, person.id)}
               />
             );
           })}
         </div>
       );
+      style.backgroundColor = "red";
     }
 
     return (
